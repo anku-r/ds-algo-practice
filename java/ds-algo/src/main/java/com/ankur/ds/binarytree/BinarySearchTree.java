@@ -114,30 +114,7 @@ public class BinarySearchTree {
 			insert(integer);
 		}
 	}
-	
-	//===================================
-	public void printBorder() {
-		printLeft(root);
-	}
-	public void printLeft(Node node) {
-		if (node != null) {
-			System.out.println(node.data);
-			printLeft(node.left);
-			printBottom(node.right);
-		} 
-	}
-	
-	private void printBottom(Node node) {
-		
-		if (node != null) {
-			printBottom(node.left);
-			printBottom(node.right);
-			if (node.left == null && node.right == null) {
-				System.out.println(node.data);
-			}
-		}
-	}
-	//==========================================
+
 }
 
 class Node {
