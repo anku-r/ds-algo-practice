@@ -1,6 +1,7 @@
 package com.ankur.ds.linkedlist;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /*
  * Node containing generic data to be stored in Stack
@@ -31,7 +32,7 @@ public class Stack<T> implements Iterable<T> {
 		Node<T> newNode = new Node<T>(); 
 		newNode.data = data;
 		newNode.previous = last;
-		newNode.index = size;;
+		newNode.index = size;
 		last = newNode;
 		size++;
 	}
@@ -106,6 +107,9 @@ public class Stack<T> implements Iterable<T> {
 		      
 		    @Override
 			public T next() {
+		    	if (currentNode == null) {
+		    		throw new NoSuchElementException();
+		    	}
 		    	T data = currentNode.data;
 				currentNode = currentNode.previous;
 				return data;
