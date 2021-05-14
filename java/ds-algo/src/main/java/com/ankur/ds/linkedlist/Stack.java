@@ -3,7 +3,7 @@ package com.ankur.ds.linkedlist;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-/*
+/**
  * Node containing generic data to be stored in Stack
  */
 class Node<T> {
@@ -12,15 +12,18 @@ class Node<T> {
     int index;
 }
 
-/*
- * Implementation of Stack
+/**
+ * Implementation of Stack using Linked List
+ * 
+ * @TODO to add head so that stack is accessible from first element
+ * @TODO re-implementation of iterator using head node
  */
 public class Stack<T> implements Iterable<T> {
 	
 	private Node<T> last;
 	private Node<T> currentNode;
 	
-	public int size;
+	private int size;
 	
 	public Stack() {
 		last = currentNode = null;
@@ -90,9 +93,15 @@ public class Stack<T> implements Iterable<T> {
 		return last == null;
 	}
 	
+	public int size() {
+		return size;
+	}
+	
 	/**
 	 * Prepares Iterator for Stack
 	 * Currently Iterator starts from last element
+	 * 
+	 * @return Stack Iterator
 	 */
 	@Override
 	public Iterator<T> iterator() {
@@ -120,6 +129,6 @@ public class Stack<T> implements Iterable<T> {
 		    	throw new UnsupportedOperationException();
 		    }
 		};
-	}	
+	}		
 }
 
