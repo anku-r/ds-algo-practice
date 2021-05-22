@@ -22,9 +22,7 @@ public class BinarySearchTree {
 	
 	public BinarySearchTree(List<Integer> list) {
 		this.root = null;
-		for (int key : list) {
-			insert(key);
-		}
+		list.forEach(this::insert);
 	}
 	
 	/**
@@ -131,7 +129,7 @@ public class BinarySearchTree {
 		}
 		Arrays.asList(
 			8, 3, 10, 1, 6, 15, 4, 7, 13, 20
-		).forEach(this::insert);
+		).forEach(data -> insert(data));
 	}
 
 }
