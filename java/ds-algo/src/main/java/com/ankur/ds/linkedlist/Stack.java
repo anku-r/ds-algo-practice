@@ -26,31 +26,31 @@ public class Stack<T> implements Iterable<T> {
 	private int size;
 	
 	public Stack() {
-		last = currentNode = null;
-		size = 0;
+		this.last = this.currentNode = null;
+		this.size = 0;
 	}
 	
 	public void push(T data) {
 		
 		Node<T> newNode = new Node<T>(); 
 		newNode.data = data;
-		newNode.previous = last;
-		newNode.index = size;
-		last = newNode;
-		size++;
+		newNode.previous = this.last;
+		newNode.index = this.size;
+		this.last = newNode;
+		this.size++;
 	}
 	
 	public T pop() {
 		
-		T data = last.data;
-		last = last.previous;
-		size--;
+		T data = this.last.data;
+		this.last = this.last.previous;
+		this.size--;
 		return data;
 	}
 	
 	public T get(int index) {
 		
-		Node<T> node = last;
+		Node<T> node = this.last;
 		while(node != null) {
 			if (node.index == index) {
 				return node.data;
@@ -62,7 +62,7 @@ public class Stack<T> implements Iterable<T> {
 	
 	public void set(int index, T data) {
 		
-		Node<T> node = last;
+		Node<T> node = this.last;
 		while(node != null) {
 			if (node.index == index) {
 				node.data = data;
@@ -75,7 +75,7 @@ public class Stack<T> implements Iterable<T> {
 	
 	public int indexOf(T data) {
 		
-		Node<T> node = last;
+		Node<T> node = this.last;
 		while(node != null) {
 			if (node.data.equals(data)) {
 				return node.index;
@@ -90,11 +90,11 @@ public class Stack<T> implements Iterable<T> {
 	}
 	
 	public boolean isEmpty() {
-		return last == null;
+		return this.last == null;
 	}
 	
 	public int size() {
-		return size;
+		return this.size;
 	}
 	
 	/**
@@ -106,7 +106,7 @@ public class Stack<T> implements Iterable<T> {
 	@Override
 	public Iterator<T> iterator() {
 			
-		currentNode = last;	
+		currentNode = this.last;	
 		return new Iterator<T>() {
 			
 			@Override
