@@ -1,10 +1,13 @@
 package com.ankur.ds.binarytree;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class BinarySearchTree {
 	
 	private Node root;
+	
+	static int maxLevel = 0;
 	
 	public BinarySearchTree() {
 		this.root = null;
@@ -23,7 +26,25 @@ public class BinarySearchTree {
 			insert(key);
 		}
 	}
-
+	
+	/**
+	 * Printing left view of binary tree
+	 */
+	public void leftView() {
+        leftView(root, 0);
+    }
+    
+    private void leftView(Node node, int level) {
+        if (node != null) {
+        	if (level == maxLevel) {
+        		System.out.println(node.data);
+        		maxLevel++;
+        	}
+        	leftView(node.left, level + 1);
+        	leftView(node.right, level + 1);
+        }
+    }
+	
 	/**
 	 * Pre-Order Traversal
 	 * Root -> Left -> Right
@@ -100,19 +121,17 @@ public class BinarySearchTree {
 	 *    /  \
 	 *   3    10
 	 *  / \     \
-	 * 1   6     14
+	 * 1   6     15
 	 *    / \    / \
 	 *   4   7  13  20
 	 */
-	public void sampleBinaryTree() {
-		
-		Integer[] arr = {
-				8, 3, 10, 1, 6, 14, 4, 7, 13, 20
-		};
-		
-		for (Integer integer : arr) {
-			insert(integer);
+	public void sampleBinaryTree() {	
+		if (root != null) {
+			throw new UnsupportedOperationException("A tree is already present");
 		}
+		Arrays.asList(
+			8, 3, 10, 1, 6, 15, 4, 7, 13, 20
+		).forEach(this::insert);
 	}
 
 }
