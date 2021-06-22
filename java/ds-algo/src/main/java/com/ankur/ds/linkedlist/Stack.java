@@ -48,6 +48,10 @@ public class Stack<T> implements Iterable<T> {
 		return data;
 	}
 	
+	public T peek() {
+		return this.last.data;
+	}
+	
 	public T get(int index) {
 		
 		Node<T> node = this.last;
@@ -95,6 +99,16 @@ public class Stack<T> implements Iterable<T> {
 	
 	public int size() {
 		return this.size;
+	}
+	
+	public Object[] toArray() {
+		Node<T> node = last;
+		Object[] arr = new Object[this.size];
+		while (node != null) {
+			arr[node.index] = node.data;
+			node = node.previous;
+		}
+		return arr;
 	}
 	
 	/**
