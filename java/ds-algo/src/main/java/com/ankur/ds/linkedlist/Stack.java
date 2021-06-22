@@ -26,35 +26,35 @@ public class Stack<T> implements Iterable<T> {
 	private int size;
 	
 	public Stack() {
-		this.last = this.currentNode = null;
-		this.size = 0;
+		last = currentNode = null;
+		size = 0;
 	}
 	
 	public void push(T data) {
 		
 		Node<T> newNode = new Node<T>(); 
 		newNode.data = data;
-		newNode.previous = this.last;
-		newNode.index = this.size;
-		this.last = newNode;
-		this.size++;
+		newNode.previous = last;
+		newNode.index = size;
+		last = newNode;
+		size++;
 	}
 	
 	public T pop() {
 		
-		T data = this.last.data;
-		this.last = this.last.previous;
-		this.size--;
+		T data = last.data;
+		last = last.previous;
+		size--;
 		return data;
 	}
 	
 	public T peek() {
-		return this.last.data;
+		return last.data;
 	}
 	
 	public T get(int index) {
 		
-		Node<T> node = this.last;
+		Node<T> node = last;
 		while(node != null) {
 			if (node.index == index) {
 				return node.data;
@@ -66,7 +66,7 @@ public class Stack<T> implements Iterable<T> {
 	
 	public void set(int index, T data) {
 		
-		Node<T> node = this.last;
+		Node<T> node = last;
 		while(node != null) {
 			if (node.index == index) {
 				node.data = data;
@@ -79,7 +79,7 @@ public class Stack<T> implements Iterable<T> {
 	
 	public int indexOf(T data) {
 		
-		Node<T> node = this.last;
+		Node<T> node = last;
 		while(node != null) {
 			if (node.data.equals(data)) {
 				return node.index;
@@ -94,16 +94,16 @@ public class Stack<T> implements Iterable<T> {
 	}
 	
 	public boolean isEmpty() {
-		return this.last == null;
+		return last == null;
 	}
 	
 	public int size() {
-		return this.size;
+		return size;
 	}
 	
 	public Object[] toArray() {
 		Node<T> node = last;
-		Object[] arr = new Object[this.size];
+		Object[] arr = new Object[size];
 		while (node != null) {
 			arr[node.index] = node.data;
 			node = node.previous;
@@ -120,7 +120,7 @@ public class Stack<T> implements Iterable<T> {
 	@Override
 	public Iterator<T> iterator() {
 			
-		currentNode = this.last;	
+		currentNode = last;	
 		return new Iterator<T>() {
 			
 			@Override
