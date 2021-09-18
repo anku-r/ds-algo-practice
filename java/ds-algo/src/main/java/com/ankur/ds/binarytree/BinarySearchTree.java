@@ -1,5 +1,6 @@
 package com.ankur.ds.binarytree;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -23,6 +24,57 @@ public class BinarySearchTree {
 	public BinarySearchTree(List<Integer> list) {
 		this.root = null;
 		list.forEach(this::insert);
+	}
+	
+	/**
+	 * 
+	 */
+	public void invert() {
+		invert(root);
+	}
+	
+	private void invert(Node node) {
+		if (node != null && (node.left != null || node.right != null)) {
+			invert(node.left);
+			invert(node.right);
+			Node tmpNode = node.left;
+			node.left = node.right;
+			node.right = tmpNode;
+		}
+	}
+	
+	/**
+	 * This method prints all the leaf nodes
+	 */
+	public void leafNode() {
+		leafNode(root);
+	}
+	
+	private void leafNode(Node node) {
+		if (node != null) {
+			if (node.left == null && node.right == null) {
+				System.out.println(node.data);
+			}
+			leafNode(node.left);
+			leafNode(node.right);
+		}
+	}
+	
+	/**
+	 * @return Sorted List out of the BST
+	 */
+	public List<Integer> sortedList() {
+		List<Integer> returnList = new ArrayList<>();
+		sortBSTIntoList(root, returnList);
+		return returnList;
+	}
+	
+	private void sortBSTIntoList(Node node, List<Integer> returnList) {
+		if (node != null) {
+			sortBSTIntoList(node.left, returnList);
+			returnList.add(node.data);
+			sortBSTIntoList(node.right, returnList);
+		}
 	}
 	
 	/**
