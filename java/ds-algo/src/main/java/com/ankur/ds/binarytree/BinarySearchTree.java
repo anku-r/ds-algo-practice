@@ -27,7 +27,7 @@ public class BinarySearchTree {
 	}
 	
 	/**
-	 * 
+	 * This method invert the binary tree
 	 */
 	public void invert() {
 		invert(root);
