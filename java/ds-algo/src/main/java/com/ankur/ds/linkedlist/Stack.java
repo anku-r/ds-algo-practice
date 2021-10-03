@@ -11,7 +11,7 @@ public class Stack<T> implements Iterable<T> {
 	
 	private Node<T> head;
 	private Node<T> last;
-	private Node<T> currentNode;
+	private Node<T> iteratorNode;
 	
 	private int size;
 	
@@ -25,7 +25,7 @@ public class Stack<T> implements Iterable<T> {
 	 * @param data
 	 */
 	public void push(T data) {	
-		if (currentNode != null) {
+		if (iteratorNode != null) {
 			throw new ConcurrentModificationException();
 		}
 		Node<T> newNode = new Node<T>(); 
@@ -50,7 +50,7 @@ public class Stack<T> implements Iterable<T> {
 		if (head == null) {
 			throw new NoSuchElementException("Stack is empty");
 		}
-		if (currentNode != null) {
+		if (iteratorNode != null) {
 			throw new ConcurrentModificationException();
 		}
 		T data = last.data;
@@ -178,21 +178,21 @@ public class Stack<T> implements Iterable<T> {
 	@Override
 	public Iterator<T> iterator() {
 			
-		currentNode = head;	
+		iteratorNode = head;	
 		return new Iterator<T>() {
 			
 			@Override
 			public boolean hasNext() {
-		    	return currentNode != null;
+		    	return iteratorNode != null;
 		    }
 		      
 		    @Override
 			public T next() {
-		    	if (currentNode == null) {
+		    	if (iteratorNode == null) {
 		    		throw new NoSuchElementException();
 		    	}
-		    	T data = currentNode.data;
-				currentNode = currentNode.next;
+		    	T data = iteratorNode.data;
+				iteratorNode = iteratorNode.next;
 				return data;
 		    }
 		      
