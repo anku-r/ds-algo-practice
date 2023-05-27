@@ -6,6 +6,7 @@ import java.util.NoSuchElementException;
 /**
  * Implementation of Queue using Dynamic Array
  */
+@SuppressWarnings("unchecked")
 public class Queue<T> implements Iterable<T> {
 
     private static final int DEFAULT_CAPACITY = 10;
